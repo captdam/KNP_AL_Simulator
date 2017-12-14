@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>KNP Assembly language simulator - uWindsor BAS_ECE DLD2</title>
+		<meta name="keywords" content="CPU, KNP assembly lauguage, simulator" />
+		<meta name="description" content="A KNP Assembly language simulator, helps understanding the assembly language." />
+		<meta name="author" content="Captdam, https://github.com/captdam" />
+		<meta name="viewport" content="width=1024" />
+		<meta charset="utf-8" />
+		<link href="./favorite.png" rel="shortcut icon" />
+		<link href="./style.css" rel="stylesheet" type="text/css"/>
+		<script src="./ini.js"></script>
+		<script src="./alu.js"></script>
+		<style id="pcInd">#ML00,#M000 {background-color:#80FFCC;}</style>
+	</head>
+	<body>
+		<header>
+			<h1>KNP Assembly language simulator</h1>
+			<span id="pc_out">PC: <input id="pc" value="0" /></span>
+			<span id="pcHex">PC(Hex): 00</span>
+			<span id="speed_out">Clock Speed: <input id="speed" value="250" />ms</span>
+			<button onclick="alu.run();">Run</button>
+			<button onclick="alu.stop();">Stop</button>
+			<button onclick="alu.step();">Run Step</button>
+			<span id="status"></span>
+		</header>
+		<main>
+			<h2>Instruction Sets</h2>
+			<table id="is">
+				<tr><th>Instruction Description</th><th>Menmonic</th><th>Format</th><th>RTL Opreation</th></tr>
+				<tr><td>Move register to register</td><td>MRR</td><td>MRR Rd, Rs</td><td>Rd = Rs</td></tr>
+				<tr><td>Move immediate to register</td><td>MVI</td><td>MRR Rd, #CV</td><td>Rd = #CV</td></tr>
+				<tr><td>Load from memory to register</td><td>LDMR</td><td>LDMR Rd, Ra</td><td>Rd = M[Ra]</td></tr>
+				<tr><td>Store register to memory</td><td>STRM</td><td>STRM Ra, Rs</td><td>M[Ra] = Rs</td></tr>
+				<tr><td>Add two registers</td><td>ADD</td><td>ADD Rd, Rs1, Rs2</td><td>Rd = Rs1 + Rs2</td></tr>
+				<tr><td>Subtract two registers</td><td>SUB</td><td>SUB Rd, Rs1, Rs2</td><td>Rd = Rs1 - Rs2</td></tr>
+				<tr><td>Increment register</td><td>INC</td><td>INC Rd, Rs</td><td>Rd = Rs + 1</td></tr>
+				<tr><td>Decrement register</td><td>DEC</td><td>DEC Rd, Rs</td><td>Rd = Rs - 1</td></tr>
+				<tr><td>Logical AND</td><td>AND</td><td>AND Rd, Rs1, Rs2</td><td>Rd = Rs1 AND Rs2</td></tr>
+				<tr><td>Logical OR</td><td>OR</td><td>OR Rd, Rs1, Rs2</td><td>Rd = Rs1 OR Rs2</td></tr>
+				<tr><td>Logical XOR</td><td>XOR</td><td>XOR Rd, Rs1, Rs2</td><td>Rd = Rs1 XOR Rs2</td></tr>
+				<tr><td>Logical NOT</td><td>NOT</td><td>NOT Rd, Rs</td><td>Rd = NOT Rs</td></tr>
+				<tr><td>Unconditional Jump</td><td>JMP</td><td>JMP Label</td><td>PC = Label</td></tr>
+				<tr><td>Jump on zero</td><td>JZ</td><td>JZ Rs, Label</td><td>Rs == 0 ? PC = Label : PC++</td></tr>
+				<tr><td>Jump on negative</td><td>JN</td><td>JN Rs, Label</td><td>Rs &lt; 0 ? PC = Label : PC++</td></tr>
+				<tr><td>Halt the program</td><td>END</td><td>END</td><td>Halt the program</td></tr>
+			</table>
+			<br /><br />
+			<h2>Memory and Registers</h2>
+			<i>Values in 16-bit hex format (Example for register/memory: R04C, M10F; for value: 0003, AD0E)</i><br />
+			<table id="cpu">
+				<tr>
+					<th>Add</th><th>Value</th>
+					<th>Add</th><th>Label</th><th>Instruction</th>
+					<th>Add</th><th>Value</th>
+					<th>Add</th><th>Value</th>
+					<th>Add</th><th>Value</th>
+				</tr>
+			</table>
+		</main>
+		<footer>
+			<p>This software is an open-source software writen by a student, I cannot guarantee the corection of this software, use this software at your own risk.</p>
+			<p>The instruction set is provided by the professor's course slide (with a slightl modify which makes it clear), the author is Mohammed A. S. Khalid, copyright of the IS belongs to the orginal author.</p>
+		</footer>
+	</body>
+</html>
