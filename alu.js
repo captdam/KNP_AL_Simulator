@@ -469,7 +469,7 @@ window.alu = new function() {
 					return;
 				}
 				//Condition
-				if (parseInt(cond[0]) > 8) {
+				if (parseInt(cond[0],16) > 8) {
 					//Fetch labels
 					for (var l = 0; l < 256; l++) {
 						var labelName = Number(l).toString(16).toUpperCase();
