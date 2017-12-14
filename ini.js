@@ -18,7 +18,7 @@ window.addEventListener('load',function() {
 	table.innerHTML += tbody;
 	//PC decimal
 	document.getElementById('pc').addEventListener('change',function(){
-		var hex = Number(this.value.toString(16)).toUpperCase();
+		var hex = Number(this.value).toString(16).toUpperCase();
 		for (var j = hex.length; j < 2; j++) hex = '0' + hex;
 		document.getElementById('pcHex').innerHTML = 'PC(Hex): ' + hex;
 	});
